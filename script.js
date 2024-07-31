@@ -11,6 +11,7 @@ function card(data) {
         <div class="project-card">
             <img src="${data.imageLink}" alt="">
             <div class="details">
+                <p>${data.name}</p>
                 <h3>${data.title}</h3>
                 <p class="description">${data.description}</p>
                 <a href="${data.projectLink}">Project link</a>
@@ -23,7 +24,6 @@ const data = await d3.csv(url)
 console.log(data)
 // the map an loop function
 var htmlCards = html.fragment`${data.map((x) => card(x))}`
-
 
 // Write the render function
 var tag = document.getElementById("projects");
