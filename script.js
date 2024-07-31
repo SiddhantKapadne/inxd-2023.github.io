@@ -1,14 +1,13 @@
 // Workflow : 
 // Get data > Write card function > Generate HTML > Put on the web page
 
-// import {html} from "./htl.js"
-// import d3
+import {html} from "https://cdn.jsdelivr.net/npm/htl@0.3.1/+esm" 
 
-// data = d3.csv(""")
+const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxK7R3RHZ57U4APbHEt7CvjrJxCYX4VFoaCZimbrjTgVq0cUfvmp1XNMG1LQLXJlvD2eoASIQ9hNoM/pub?gid=1985818293&single=true&output=csv"
 
 
 function card(data) {
-    return html`
+    return html.fragment`
         <div class="project-card">
             <img src="${data.imageLink}" alt="">
             <div class="details">
@@ -20,6 +19,12 @@ function card(data) {
     `;
 }
 
+const data = await d3.csv(url)
+console.log(data)
 // the map an loop function
+var htmlCards = html.fragment`${data.map((x) => card(x))}`
+
 
 // Write the render function
+var tag = document.getElementById("projects");
+tag.appendChild(htmlCards)
