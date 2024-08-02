@@ -10,6 +10,7 @@ function card(data) {
     return html.fragment`
         <div class="project-card">
             <img src="${data.imageLink}" alt="">
+            console.log(data.imageLink)
             <div class="details">
                 <p>${data.name}</p>
                 <h3>${data.title}</h3>
